@@ -21,7 +21,7 @@
 
         </div>
         <div class="d-flex justify-content-center">
-            <div class="btn btn-primary text-uppercase mt-5 px-5 ">Load More</div>
+            <div class="btn btn-primary text-uppercase mt-5 px-5 "><a href="{{ route('comics.create') }}" id="add-comic">Aggiungi nuova serie</a></div>
         </div>
     </div>
 </main>
