@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ComicController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,5 @@ Route::get('/', function () {
     $pages = config('db.pages');
     return view('home',compact('menuList','comics','pages'));
 });
+
+Route::resource('comics', ComicController::class);
