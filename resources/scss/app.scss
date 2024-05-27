@@ -1,0 +1,66 @@
+@use './partials/variables' as *;
+
+$fa-font-path: "../webfonts" !default;
+
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+
+@import '~bootstrap/scss/bootstrap';
+
+h1 {
+    color: $text-color;
+}
+ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+header {
+    background-color: $headerbg;
+    
+    li {
+        border-bottom: 3px solid transparent;
+        margin: 0 10px;
+        align-items: center;
+        &:hover {
+            border-bottom: 3px solid $headeranchorover;
+            a {
+                color: $headeranchorover;
+            }
+        }
+    }
+        a {
+            color: black;
+            
+            font-weight: bold;
+           
+        }
+    
+}
+.jumbo {
+    height: 300px;
+    background-image: url('../img/jumbotron.jpg');
+    background-size: cover;
+}
+.img-card {
+        aspect-ratio: 1/1;
+        object-fit: cover;
+    }
+
+main {
+    background-color: $mainbg;
+    color: white;
+
+    .btn {
+        transform: translateY(-50%);
+    }
+}
+
+.btn {
+    transform: translateY(-50%);
+    border-radius: 0;
+
+}
