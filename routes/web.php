@@ -18,7 +18,7 @@ Route::get('/', function () {
     $menuList = config('db.menuList');
     $comics = config('db.comics');
     $pages = config('db.pages');
-    return view('home',compact('menuList','comics','pages'));
+    return redirect('/comics');
 });
 
 Route::resource('comics', ComicController::class);
