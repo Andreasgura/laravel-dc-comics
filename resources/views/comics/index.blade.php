@@ -14,7 +14,8 @@
                     <img class="w-100 img-card" src="{{ $comic->thumb }}" alt="{{ $comic->series }}">
                 </div>
                 <div class="text-uppercase ">
-                    {{ $comic->series }}
+                    <a href="{{ route('comics.show', $comic) }}">{{ $comic->series }}</a>
+                
                 </div>
             </div>
             @endforeach
