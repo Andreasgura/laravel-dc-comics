@@ -15,7 +15,7 @@
           </div>
           <div class="mb-3">
             <label for="price" class="form-label">Prerzzo</label>
-            <input type="text" class="form-control" id="price"  name="price">
+            <input type="text" class="form-control" id="price"  name="price" required>
           </div>
           <div class="mb-3">
             <label for="series" class="form-label">Nome serie</label>

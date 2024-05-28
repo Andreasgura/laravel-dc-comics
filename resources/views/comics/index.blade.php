@@ -4,7 +4,6 @@
 
 @section('content')
 <main>
-    <div>ciao</div>
     <div class="container cards">
         <div class="btn btn-primary text-uppercase">current series</div>
         <div class="row">
@@ -17,6 +16,11 @@
                     <a href="{{ route('comics.show', $comic) }}">{{ $comic->series }}</a>
                 
                 </div>
+                <form action="{{ route('comics.destroy', $comic) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Elimina</button>
+                </form>
             </div>
             @endforeach
 
