@@ -54,12 +54,12 @@ main {
     background-color: $mainbg;
     color: white;
 
-    .btn {
+    .btn.translate {
         transform: translateY(-50%);
     }
 }
 
-.btn {
+.btn.translate {
     transform: translateY(-50%);
     border-radius: 0;
 
