@@ -5,6 +5,11 @@
 @section('content')
 <main>
     <div class="container cards">
+        @if(session()->has('message'))
+        <div class="alert alert-success" role="alert">
+            {{ session()->get('message') }}
+        </div>
+        @endif
         <div class="btn btn-primary text-uppercase translate">current series</div>
         <div class="row">
             @foreach ($comics as $comic)
@@ -16,19 +21,22 @@
                     <a href="{{ route('comics.show', $comic) }}">{{ $comic->series }}</a>
 
                 </div>
-                <form action="{{ route('comics.destroy', $comic) }}" method="POST" class="mt-3 d-inline">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger ">Elimina</button>
-                </form>
+                <div>
+                    <a class="btn btn-primary" href="{{route('comics.edit', $comic)}}" id="deleteBtn">Modifica</a>
+                </div>
             </div>
             @endforeach
 
         </div>
         <div class="d-flex justify-content-center">
-            <div class="btn btn-primary text-uppercase mt-5 px-5 translate"><a href="{{ route('comics.create') }}" id="add-comic">Aggiungi nuova serie</a></div>
+            <a href="{{ route('comics.create') }}" id="add-comic">
+                <div class="btn btn-primary text-uppercase mt-5 px-5 translate">Aggiungi nuova serie</div>
+            </a>
         </div>
+
     </div>
+    @include('partials.ceckModal')
+
 </main>
 
 @endsection

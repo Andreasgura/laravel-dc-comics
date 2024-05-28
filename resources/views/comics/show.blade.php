@@ -3,9 +3,12 @@
 @section('title', 'Home')
 
 @section('content')
-    
- <h1>{{ $comic->series }}</h1>
-<div>
-    <a class="btn btn-primary" href="{{route('comics.edit', $comic)}}">Modifica</a>
-</div>
+
+<h1>{{ $comic->series }}</h1>
+<form action="{{ route('comics.destroy', $comic) }}" method="POST" class="mt-3 d-inline">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn btn-danger" id="deleteBtn">Elimina</button>
+</form>
+@include('partials.ceckModal')
 @endsection

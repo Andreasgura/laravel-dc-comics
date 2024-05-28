@@ -42,7 +42,7 @@ class ComicController extends Controller
         $comic->series = $request->series;
         $comic->type = $request->type; 
         $comic->save();
-        return redirect()->route('comics.index');
+        return redirect()->route('comics.index')->with('message', 'Fumetto aggiunto correttamente');
     }
 
     /**
@@ -78,7 +78,7 @@ class ComicController extends Controller
     {
         $data = $request->all();
         $comic->update($data);
-        return redirect()->route('comics.show', $comic->id);
+        return redirect()->route('comics.show', $comic->id)->with('message', 'Fumetto {{ $comic->thumb }} aggiornato correttamente');
     }
 
     /**
@@ -88,8 +88,9 @@ class ComicController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Comic $comic)
-    {
+    {   
+        $deleted = $comic->thumb;
         $comic->delete();
-        return redirect()->route('comics.index');
+        return redirect()->route('comics.index', $deleted )->with('message', 'Fumetto {{ $deleted }} eliminato correttamente');
     }
 }
