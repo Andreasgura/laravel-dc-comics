@@ -34,14 +34,29 @@ class ComicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Comic $comic)
     {
-        $comic = new Comic();
-        $comic->thumb = $request->thumb;
-        $comic->price = $request->price;
-        $comic->series = $request->series;
-        $comic->type = $request->type; 
-        $comic->save();
+        $request->validate([
+            'thumb' => 'required|max:255',
+            'price' => 'required|max:20',
+            'series'=> 'required|max:50',
+            'type'=> 'required|max:50',
+        ]);
+        
+        // validation, long way
+        
+        // short way to create and save new comic;
+        // fillable or guarded needen in model
+        $data = $request->all();
+        $comic->create($data);
+
+        // long way to create and save new comic
+        // $comic = new Comic();
+        // $comic->thumb = $request->thumb;
+        // $comic->price = $request->price;
+        // $comic->series = $request->series;
+        // $comic->type = $request->type; 
+        // $comic->save();
         return redirect()->route('comics.index')->with('message', 'Fumetto aggiunto correttamente');
     }
 

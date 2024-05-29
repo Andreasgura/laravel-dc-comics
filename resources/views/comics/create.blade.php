@@ -5,25 +5,33 @@
 @section('content')
 <section class="container">
     <h1>Crea</h1>
-
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <form action="{{route('comics.store')}}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="thumb" class="form-label">Inserisci url immagine</label>
-            <input type="text" class="form-control" id="thumb" aria-describedby="thumbHelp" name="thumb" required>
+            <input type="text" class="form-control" id="thumb" aria-describedby="thumbHelp" name="thumb" >
             <div id="titleHelp" class="form-text">bhooo</div>
           </div>
           <div class="mb-3">
             <label for="price" class="form-label">Prerzzo</label>
-            <input type="text" class="form-control" id="price"  name="price" required>
+            <input type="text" class="form-control" id="price"  name="price" >
           </div>
           <div class="mb-3">
             <label for="series" class="form-label">Nome serie</label>
-            <input type="text" class="form-control" id="series"  name="series" required>
+            <input type="text" class="form-control" id="series"  name="series" >
           </div>
           <div class="mb-3">
             <label for="type" class="form-label">Tipo</label>
-            <input type="text" class="form-control" id="type"  name="type" required>
+            <input type="text" class="form-control" id="type"  name="type" >
           </div>
         <button type="submit" class="btn btn-primary">Crea</button>
         <button type="reset" class="btn btn-danger">Annulla</button>
