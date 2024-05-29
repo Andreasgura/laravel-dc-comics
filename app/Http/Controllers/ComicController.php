@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comic;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreComicRequest;
 
 class ComicController extends Controller
 {
@@ -34,29 +35,37 @@ class ComicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Comic $comic)
+    public function store(StoreComicRequest $request, Comic $comic)
     {
+        /*
+         VALIDATION, LONG WAY
         $request->validate([
             'thumb' => 'required|max:255',
             'price' => 'required|max:20',
             'series'=> 'required|max:50',
             'type'=> 'required|max:50',
         ]);
+        */
         
-        // validation, long way
-        
-        // short way to create and save new comic;
-        // fillable or guarded needen in model
-        $data = $request->all();
+        // VALIDATION, SHORT WAY
+        $data = $request->validated();
+
+        /*short way to create and save new comic;
+        fillable or guarded needen in model
+        */
+        // $data = $request->all();
         $comic->create($data);
 
-        // long way to create and save new comic
-        // $comic = new Comic();
-        // $comic->thumb = $request->thumb;
-        // $comic->price = $request->price;
-        // $comic->series = $request->series;
-        // $comic->type = $request->type; 
-        // $comic->save();
+        /*
+        LONG WAY TO CREATE AND SAVE NEW COMIC
+        
+        $comic = new Comic();
+        $comic->thumb = $request->thumb;
+        $comic->price = $request->price;
+        $comic->series = $request->series;
+        $comic->type = $request->type; 
+        $comic->save();
+        */
         return redirect()->route('comics.index')->with('message', 'Fumetto aggiunto correttamente');
     }
 
