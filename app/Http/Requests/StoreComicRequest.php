@@ -24,10 +24,25 @@ class StoreComicRequest extends FormRequest
     public function rules()
     {
         return [
-            'thumb' => 'required|max:255',
+            'thumb' => 'required|max:255|min:3',
             'price' => 'required|max:20',
-            'series'=> 'required|max:50',
-            'type'=> 'required|max:50'
+            'series' => 'required|max:50',
+            'type' => 'required|max:50'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'thumb.required' => 'Il campo immagine è obbligatorio',
+            'thumb.min' => 'Il campo immagine deve contenere almeno :min caratteri',
+            'thumb.max' => 'Il campo immagine deve contenere al massimo :max caratteri',
+            'price.required' => 'Il campo prezzo è obbligatorio',
+            'price.max' => 'Il campo prezzo deve contenere al massimo :max caratteri',
+            'series.required' => 'Il campo serie è obbligatorio',
+            'series.max' => 'Il campo serie deve contenere al massimo :max caratteri',
+            'type.required' => 'Il campo tipo è obbligatorio',
+            'type.max' => 'Il campo tipo deve contenere al massimo :max caratteri',
         ];
     }
 }
